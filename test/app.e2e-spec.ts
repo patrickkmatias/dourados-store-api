@@ -29,7 +29,11 @@ describe('AppController (e2e)', () => {
     await app.close();
   });
 
-  it('should get all products', async () => {
+  it('/ (GET) | should redirect to /products', async () => {
+    return await spec().get('/').expectStatus(301);
+  });
+
+  it('/products (GET) | should get all products', async () => {
     const mockProd: Product = {
       id: 0,
       name: 'Shiver',
