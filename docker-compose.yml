@@ -1,0 +1,9 @@
+services:
+  test-db:
+    image: postgres
+    ports:
+      - 7777:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: golden
+      POSTGRES_DB: douradosdb
