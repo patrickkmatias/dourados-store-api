@@ -1,6 +1,8 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
+import { Product } from '@prisma/client';
 import { AppModule } from './../src/app.module';
+import { eachLike } from 'pactum-matchers';
 import { spec, request } from 'pactum';
 
 describe('AppController (e2e)', () => {
@@ -25,5 +27,24 @@ describe('AppController (e2e)', () => {
 
   it('/ (GET)', async () => {
     return await spec().get('/').expectStatus(200).expectBody('Hello World!');
+  });
+
+  it('should get all products', async () => {
+    const mockProd: Product = {
+      id: 0,
+      name: 'Shiver',
+      slug: 'shiver',
+      description: 'shiver',
+      price: 0,
+      price_id: 'price...',
+      imageUrl: 'image.com',
+    };
+
+    return await spec()
+      .get('/products')
+      .expectStatus(200)
+      .expectJson({
+        products: eachLike(mockProd),
+      });
   });
 });
