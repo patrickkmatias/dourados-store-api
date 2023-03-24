@@ -1,0 +1,4 @@
+tasks:
+  - name: Dev Server
+    init: npm i -g @nestjs/cli && npm i
+    command: npm run start:dev
