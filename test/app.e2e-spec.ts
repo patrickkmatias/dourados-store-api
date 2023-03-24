@@ -25,8 +25,8 @@ describe('AppController (e2e)', () => {
     request.setBaseUrl('http://localhost:3300');
   });
 
-  it('/ (GET)', async () => {
-    return await spec().get('/').expectStatus(200).expectBody('Hello World!');
+  afterAll(async () => {
+    await app.close();
   });
 
   it('should get all products', async () => {

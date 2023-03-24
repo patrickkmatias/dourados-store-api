@@ -22,7 +22,7 @@
     "test:watch": "npm run test -- --watch",
     "test:cov": "npm run test -- --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "test:e2e": "npm run test -- --watch --no-cache --config ./test/jest-e2e.json",
     "db:dev:up": "docker compose up dev-db -d",
     "db:dev:rm": "docker compose rm dev-db -s -f -v",
     "db:dev:restart": "npm run db:dev:rm && npm run db:dev:up && sleep 3 && npm run prisma:dev:deploy",
