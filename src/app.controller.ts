@@ -10,4 +10,9 @@ export class AppController {
   getHome() {
     return;
   }
+
+  @Get('/products')
+  findAll() {
+    return this.appService.findAll();
+  }
 }
