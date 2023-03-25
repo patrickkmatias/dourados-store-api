@@ -9,4 +9,14 @@ export class AppService {
   async findAll(): Promise<{ data: Product[] }> {
     return { data: await this.prisma.product.findMany() };
   }
+
+  async findOne(id: number) {
+    return {
+      data: await this.prisma.product.findUnique({
+        where: {
+          id,
+        },
+      }),
+    };
+  }
 }
