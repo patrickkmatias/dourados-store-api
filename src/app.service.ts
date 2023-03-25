@@ -6,17 +6,15 @@ import { Injectable } from '@nestjs/common';
 export class AppService {
   constructor(private prisma: PrismaService) {}
 
-  async findAll(): Promise<{ data: Product[] }> {
-    return { data: await this.prisma.product.findMany() };
+  async findAll(): Promise<Product[]> {
+    return await this.prisma.product.findMany();
   }
 
   async findOne(id: number) {
-    return {
-      data: await this.prisma.product.findUnique({
-        where: {
-          id,
-        },
-      }),
-    };
+    return await this.prisma.product.findUnique({
+      where: {
+        id,
+      },
+    });
   }
 }
