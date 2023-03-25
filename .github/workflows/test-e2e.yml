@@ -1,0 +1,21 @@
+name: Application E2E CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-n-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the application
+        run: npm run build
+
+      - name: Test the application
+        run: npm run test:e2e:ci
