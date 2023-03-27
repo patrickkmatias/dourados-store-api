@@ -51,15 +51,13 @@ describe('AppController (e2e)', () => {
     return await spec()
       .get('/products')
       .expectStatus(200)
-      .expectJsonMatch({
-        data: eachLike(mockProd),
-      });
+      .expectJsonMatch(eachLike(mockProd));
   });
 
   it('/products/:id (GET) | should get a product', async () => {
     return await spec()
       .get('/products/1')
       .expectStatus(200)
-      .expectJsonMatch({ data: like(mockProd) });
+      .expectJsonMatch(like(mockProd));
   });
 });
